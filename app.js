@@ -3,7 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var expressValidator = require(expres-expressValidator);
+var expressValidator = require ('express-validator');
+//var expressValidator = require('express-validator');
 var session = require('express-session');
 var passport = require('passport');
 var localStrategy= require('passport-local').Strategy;
@@ -46,22 +47,22 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //validator 
-app.use(expressValidator({
-  errorFormatter: function(param,msg,value){
-    var namespace = param.split('.'),
-    root = namespace.shift(),
-    formParam = root;
+// app.use(expressValidator({
+//   errorFormatter: function(param,msg,value){
+//     var namespace = param.split('.'),
+//     root = namespace.shift(),
+//     formParam = root;
 
-  while(namespace.length){
-  formParam += '[' + namespace.shift() +']';
-  }
-  return {
-    param: formParam,
-    msg: msg,
-    value: value
-  };
-}
-}));
+//   while(namespace.length){
+//   formParam += '[' + namespace.shift() +']';
+//   }
+//   return {
+//     param: formParam,
+//     msg: msg,
+//     value: value
+//   };
+// }
+// }));
 
 // adding another middleware - connect-flash
 app.use(require('connect-flash')());
